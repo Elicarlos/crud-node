@@ -10,7 +10,7 @@ const urlEncodeedParser = bodyParser.urlencoded({ extended: false})
 const sql = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'novosga',
+    password: 'suporte',
     port: 3306
 })
 //Aqui digo que quero usar este banco de dados

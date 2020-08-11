@@ -1,22 +1,26 @@
-<h1>Ola sou select</h1>
+<h1 class="h1">Lista de usuários</h1>
 
-<table>
-    <tr>
-        <td>Action</td>
-        <td>Id</td>
-        <td>Nome</td>
-        <td>idade</td>
-    </tr>
+<table class="table table-hover">
+    <thead>
+        <tr>        
+            <th scope="col">Codigo</td>
+            <th scope="col">Nome</td>
+            <th scope="col">idade</td>
+            <th scope="col">Action</td>
+        </tr>
+    </thead>
 {{!-- Esta é forma que o node usa para entrar em objetos, lembrando que data foi um nome escolhido --}}
 {{#data}}
     <tr>
+        
+        <td>{{ id }}</td>
+        <td>{{ nome }}</td>
+        <td>{{ idade }}</td>
         <td>
             <a href="update"><img src="/img/editar.png" alt="editar" width="15%"></a>
             <a href="deletar"><img src="/img/deletar.png" alt="deletar" width="15%"></a>
         </td>
-        <td>{{ id }}</td>
-        <td>{{ nome }}</td>
-        <td>{{ idade }}</td>
+        
     </tr>
 {{/data}}
 </table>
