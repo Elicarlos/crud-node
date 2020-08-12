@@ -10,7 +10,7 @@ const urlEncodeedParser = bodyParser.urlencoded({ extended: false})
 const sql = mysql.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'suporte',
+    password: 'novosga',
     port: 3306
 })
 //Aqui digo que quero usar este banco de dados
@@ -81,12 +81,22 @@ app.get('/select/:id?', function(req, res){
 })
 
 
-app.get('/deletar', function(req, res){
+app.get('/deletar/:id', function(req, res){
+    sql.query('delete from user where id=?', [req.params.id])
     res.render('deletar')
 })
 
-app.get('/update',function(req, res){
-    res.render('update')
+app.get('/update/:id',function(req, res){  
+    sql.query('select * from user where id=?', [req.params.id], function (err, results, fields){
+        res.render('update', {id:req.params.id, nome:results[0].nome, idade:results[0].idade})
+    })  
+    
+     
+})
+
+app.post('/controllerUpdate', urlEncodeedParser, function(req, res){
+    sql.query('update user set nome=?, idade=? where id=?', [req.body.nome, req.body.idade, req.body.id])
+    res.render('controllerUpdate')
 })
 
 //Start Server
